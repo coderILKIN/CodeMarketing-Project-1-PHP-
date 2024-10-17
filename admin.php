@@ -11,29 +11,44 @@
 
 
 
+
+
+
+<form action="admin.php" method="POST">
+    <button type="submit">Log Out</button>
+</form>
+
 <?php
 
+// echo "Welcome";
 
-if(!isset($_COOKIE['username'], $_COOKIE['email'])){
-    header('location: login.php');
+// if(!isset($_SESSION['name'])){
+//     header("Location: login.php");
+//     exit();
+// }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    session_start();
+
+    $_SESSION[] = [];
+
+    session_destroy();
+
+
+
+
+    header("Location: login.php");
+   
 }
 
-if(isset($_COOKIE['email'], $_COOKIE['username'])){
-    $email = $_COOKIE['email'] ?? '';
-    $username = $_COOKIE['username'] ?? '';
-}
 
 
-echo "Email: " . $email . "<br>";
-echo "User: " . $username;
 
 
 ?>
 
 
-<form action="logout.php" method="POST">
-    <button>Logout</button>
-</form>
 
 
 
